@@ -6,9 +6,9 @@ cmd: GIT_COMMIT := $(shell git rev-list -1 HEAD)
 cmd: CGO_ENABLED := 0
 cmd: ## Build all commands
 	@echo "# Building bin/gctl ..."
-	@go build -mod=vendor -a -installsuffix cgo -ldflags '-X "command.buildDate=$(DATE)" -X "main.gitCommit=$(GIT_COMMIT)"' -o ./bin/gctl ./cmd/gctl
+	@go build -mod=vendor -installsuffix cgo -ldflags '-X "command.buildDate=$(DATE)" -X "main.gitCommit=$(GIT_COMMIT)"' -o ./bin/gctl ./cmd/gctl
 	@echo "# Building bin/glaucus ..."
-	@go build -mod=vendor -a -installsuffix cgo -ldflags '-s -w -X "command.buildDate=$(DATE)" -X "main.gitCommit=$(GIT_COMMIT)"' -o ./bin/glaucus ./cmd/glaucus
+	@go build -mod=vendor -installsuffix cgo -ldflags '-s -w -X "command.buildDate=$(DATE)" -X "main.gitCommit=$(GIT_COMMIT)"' -o ./bin/glaucus ./cmd/glaucus
 
 .PHONY: init
 init: ## Installs tools
